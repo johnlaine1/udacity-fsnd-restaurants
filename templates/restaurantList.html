@@ -1,16 +1,17 @@
 {% extends 'base.html' %}
 
 {% block content %}
+	<div class="col-md-6">
+		<h1 class="text-center">Restaurant List</h1>
 
-	<h1>Restaurant List</h1>
+		{% if restaurants %}
+			{% for restaurant in restaurants %}
+				<a class="btn btn-info btn-lg btn-block" href="{{ url_for('restaurantMenu', restaurant_id=restaurant.id)}}">
+					<h3>{{ restaurant.name }}</h3>
+				</a>
+			{% endfor %}
 
-	{% if restaurants %}
-		{% for restaurant in restaurants %}
-			<a href="{{ url_for('restaurantMenu', restaurant_id=restaurant.id)}}">
-				<h3>{{ restaurant.name }}</h3>
-			</a>
-		{% endfor %}
-
-	{% endif %}
+		{% endif %}
+	</div>
 
 {% endblock %}
