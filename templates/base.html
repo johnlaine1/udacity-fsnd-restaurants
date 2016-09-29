@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+	{% block header %}
+    <div class="jumbotron">
+      <div class="container">
+        <h1>Restaurant Menu App</h1>
+        <p>This is an app created with Python, Flask, Jinja, SQlAlchemy and Bootstrap</p>
+        <p><a class="btn btn-primary btn-lg" href="{{ url_for('restaurants') }}" role="button">Restaurant List &raquo;</a></p>
+      </div>
+    </div>
+	{% endblock %}
+
+	<div class="container">
+		{% block content %}
+		{% endblock %}
+	<div>
+	{% block footer %}
+	{% endblock %}
+</body>
+</html>

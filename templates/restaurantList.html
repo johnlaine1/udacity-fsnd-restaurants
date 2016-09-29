@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+	<h1>Restaurant List</h1>
+
+	{% if restaurants %}
+		{% for restaurant in restaurants %}
+			<a href="{{ url_for('restaurantMenu', restaurant_id=restaurant.id)}}">
+				<h3>{{ restaurant.name }}</h3>
+			</a>
+		{% endfor %}
+
+	{% endif %}
+
+{% endblock %}
