@@ -59,7 +59,7 @@ def editMenuItem(restaurant_id, menu_id):
 		menu_item.price = request.form['price']
 		session.add(menu_item)
 		session.commit()
-		flash('Menu Item: {} Edited'.format(menu_item.name))
+		flash('Menu Item: {} has been edited'.format(menu_item.name))
 		return redirect(url_for('restaurantMenu', restaurant_id = restaurant_id))
 
 # Task 3: Create a route for deleteMenuItem function here
@@ -75,7 +75,7 @@ def deleteMenuItem(restaurant_id, menu_id):
 	if request.method == 'POST':
 		session.delete(menu_item)
 		session.commit()
-		flash('Menu Item: {} Deleted'.format(menu_item.name))
+		flash('Menu Item: {} has been deleted'.format(menu_item.name))
 		return redirect(url_for('restaurantMenu', restaurant_id = restaurant_id))
 
 # Make an endpoint GET request
