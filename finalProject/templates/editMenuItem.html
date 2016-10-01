@@ -28,8 +28,8 @@
 		<input type="text" name="course" value="{{ menu_item.course }}">
 	</label>
 </div>
-<input type="submit" value="Edit">
-<a href="#">Cancel</a>
+<input type="submit" value="Save">
+<a href="{{ url_for('showRestaurantMenu', restaurant_id=restaurant.id) }}">Cancel</a>
 </form>
 
 {% endblock %}

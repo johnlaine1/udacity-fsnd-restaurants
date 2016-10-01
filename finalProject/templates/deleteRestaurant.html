@@ -4,6 +4,6 @@
 	<h2>Are you sure that you want to permanently delete: {{ restaurant.name }}?</h2>
 	<form method="post" action="#">
 	<input type="submit" value="delete">
-	<a href="#">Cancel</a>
+	<a href="{{ url_for('showRestaurants') }}">Cancel</a>
 	</form>
 {% endblock %}
