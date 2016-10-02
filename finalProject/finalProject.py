@@ -1,13 +1,5 @@
-from flask import Flask, render_template, redirect, url_for, request
+from flask import Flask, render_template, redirect, url_for, request, jsonify
 import db_controller
-
-#Fake Restaurants
-restaurant = {'name': 'The CRUDdy Crab', 'id': '1'}
-restaurants = [{'name': 'The CRUDdy Crab', 'id': '1'}, {'name':'Blue Burgers', 'id':'2'},{'name':'Taco Hut', 'id':'3'}]
-
-#Fake Menu Items
-items = [ {'name':'Cheese Pizza', 'description':'made with fresh cheese', 'price':'$5.99','course' :'Entree', 'id':'1'}, {'name':'Chocolate Cake','description':'made with Dutch Chocolate', 'price':'$3.99', 'course':'Dessert','id':'2'},{'name':'Caesar Salad', 'description':'with fresh organic vegetables','price':'$5.99', 'course':'Entree','id':'3'},{'name':'Iced Tea', 'description':'with lemon','price':'$.99', 'course':'Beverage','id':'4'},{'name':'Spinach Dip', 'description':'creamy dip with fresh spinach','price':'$1.99', 'course':'Appetizer','id':'5'} ]
-item =  {'name':'Cheese Pizza','description':'made with fresh cheese','price':'$5.99','course' :'Entree'}
 
 
 app = Flask(__name__)
@@ -90,6 +82,22 @@ def deleteMenuItem(restaurant_id, menu_item_id):
 	if request.method == 'POST':
 		db_controller.delete_menu_item(menu_item_id)
 		return redirect(url_for('showRestaurantMenu', restaurant_id = restaurant_id))
+
+########## JSON API Endpoints ##########
+@app.route('/restaurants/JSON')
+def showRestaurantsJSON():
+	restaurants = db_controller.get_restaurants()
+	return jsonify(restaurants = [r.serialize for r in restaurants])
+
+@app.route('/restaurant/<int:restaurant_id>/menu/JSON')
+def showRestaurantMenuJSON(restaurant_id):
+	menu_items = db_controller.get_menu_items_by_restaurant(restaurant_id)
+	return jsonify(menu_items = [i.serialize for i in menu_items])
+
+@app.route('/restaurant/<int:restaurant_id>/menu/<int:menu_item_id>/JSON')
+def showRestaurantMenuItemJSON(restaurant_id, menu_item_id):
+	menu_item = db_controller.get_menu_item(menu_item_id)
+	return jsonify(menu_item = menu_item.serialize)
 
 if __name__ == '__main__':
 	app.debug = True
