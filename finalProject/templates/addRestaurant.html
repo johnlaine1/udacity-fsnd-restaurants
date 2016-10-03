@@ -2,15 +2,13 @@
 
 {% block content %}
 <h2>Create a new restaurant</h2>
-<form method="post" action="#">
-	<div>
-	<label for="name">
-		Name
+<form method="post" action="{{ url_for('addRestaurant') }}">
+	<div class="form-group">
+		<label for="name"></label>
 		<input type="text" name="name" placeholder="Restaurant name">
-	</label>
 	</div>
-	<input type="submit" value="Create">
-	<a href="#">Cancel</a>
+	<input class="btn btn-primary" type="submit" value="Create">
+	<a href="{{ url_for('showRestaurants') }}">Cancel</a>
 </form>
 
 

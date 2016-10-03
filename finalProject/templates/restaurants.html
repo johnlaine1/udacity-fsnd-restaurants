@@ -5,14 +5,25 @@
 <h2>Restaurant List</h2>
 
 <h3><a href="{{ url_for('addRestaurant') }}">Create a new restaurant</a></h3>
-{% if restaurants %}
-	{% for restaurant in restaurants %}
-		<a href="{{ url_for('showRestaurantMenu', restaurant_id=restaurant.id) }}">{{ restaurant.name }}</a>
-		<br>
-		<a href="{{ url_for('editRestaurant', restaurant_id=restaurant.id) }}">Edit</a>
-		<a href="{{ url_for('deleteRestaurant', restaurant_id=restaurant.id) }}">Delete</a>
-		<br>
-	{% endfor %}
-{% endif %}
 
+{% if restaurants %}
+	<div class="row restaurants">
+	{% for restaurant in restaurants %}
+		<div class="col-md-4">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						<a href="{{ url_for('showRestaurantMenu', restaurant_id=restaurant.id) }}">{{ restaurant.name }}</a>
+					</h3>										
+				</div>
+				<div class="panel-body">
+					<a class="btn btn-primary" href="{{ url_for('showRestaurantMenu', restaurant_id=restaurant.id) }}">Menu</a>
+					<a class="btn btn-primary" href="{{ url_for('editRestaurant', restaurant_id=restaurant.id) }}">Edit</a>
+					<a class="btn btn-primary" href="{{ url_for('deleteRestaurant', restaurant_id=restaurant.id) }}">Delete</a>
+				</div>
+			</div>
+		</div>
+	{% endfor %}
+	</div>
+{% endif %}
 {% endblock %}

@@ -28,6 +28,7 @@ def create_restaurant(name):
 	restaurant = Restaurant(name = name)
 	session.add(restaurant)
 	session.commit()
+	return restaurant
 
 def get_restaurant(id):
 	restaurant = session.query(Restaurant).filter(Restaurant.id == id).one()
@@ -56,6 +57,7 @@ def create_menu_item(name, description, price, course, restaurant_id):
 	item = MenuItem(name = name, description = description, price = price, course = course, restaurant_id = restaurant_id)
 	session.add(item)
 	session.commit()
+	return item
 
 def update_menu_item(menu_item_id, name, description, price, course):
 	item = session.query(MenuItem).filter_by(id = menu_item_id).one()

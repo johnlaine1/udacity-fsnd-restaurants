@@ -2,33 +2,25 @@
 
 {% block content %}
 <h2>Create new menu item for: {{ restaurant.name }}</h2>
-<form method="post" action="#">
-<div>
-	<label for="name">
-		Name
+<form method="post" action="{{ url_for('addMenuItem', restaurant_id=restaurant.id) }}">
+	<div class="form-group">
+		<label for="name"></label>
 		<input type="text" name="name" placeholder="Item name">
-	</label>
-</div>
-<div>
-	<label for="description">
-		Description
+	</div>
+	<div class="form-group">
+		<label for="description"></label>
 		<input type="text" name="description" placeholder="Description">
-	</label>
-</div>
-<div>
-	<label for="price">
-		Price
+	</div>
+	<div class="form-group">
+		<label for="price"></label>
 		<input type="text" name="price" placeholder="Price">
-	</label>
-</div>
-<div>
-	<label for="course">
-		Course
+	</div>
+	<div class="form-group">
+		<label for="course"></label>
 		<input type="text" name="course" placeholder="Course">
-	</label>
-</div>
-<input type="submit" value="Create">
-<a href="#">Cancel</a>
+	</div>
+	<input class="btn btn-primary" type="submit" value="Create">
+	<a href="{{ url_for('showRestaurantMenu', restaurant_id=restaurant.id) }}">Cancel</a>
 </form>
 
 {% endblock %}

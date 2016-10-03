@@ -3,33 +3,25 @@
 {% block content %}
 
 <h2>Edit information for: {{ menu_item.name }}</h2>
-<form method="post" action="#">
-<div>
-	<label for="name">
-		Name
+<form method="post" action="{{ url_for('editMenuItem', restaurant_id=restaurant.id, menu_item_id=menu_item.id) }}">
+	<div class="form-group">
+		<label for="name">Name</label>
 		<input type="text" name="name" value="{{ menu_item.name }}">
-	</label>
-</div>
-<div>
-	<label for="description">
-		Description
+	</div>
+	<div class="form-group">
+		<label for="description">Description</label>
 		<input type="text" name="description" value="{{ menu_item.description }}">
-	</label>
-</div>
-<div>
-	<label for="price">
-		Price
+	</div>
+	<div class="form-group">
+		<label for="price">Price</label>
 		<input type="text" name="price" value="{{ menu_item.price }}">
-	</label>
-</div>
-<div>
-	<label for="course">
-		Course
+	</div>
+	<div class="from-group">
+		<label for="course">Course</label>
 		<input type="text" name="course" value="{{ menu_item.course }}">
-	</label>
-</div>
-<input type="submit" value="Save">
-<a href="{{ url_for('showRestaurantMenu', restaurant_id=restaurant.id) }}">Cancel</a>
+	</div>
+	<button class="btn btn-primary" type="submit">Save</button>
+	<a href="{{ url_for('showRestaurantMenu', restaurant_id=restaurant.id) }}">Cancel</a>
 </form>
 
 {% endblock %}

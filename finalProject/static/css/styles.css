@@ -1,0 +1,13 @@
+.menu-item {
+	min-height: 250px;
+	max-height: 250px;
+	overflow: auto;
+}
+
+.menu-item.panel-body {
+	width: 100%;
+}
+
+.flash-mssg {
+	list-style: none;
+}

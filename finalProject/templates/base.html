@@ -1,18 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Restaurant Menu Service</title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSS Files-->
 	<link rel="stylesheet" href="{{ url_for('static', filename='lib/bootstrap/css/bootstrap.min.css') }}">
 	<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
-	{% block content %}
-	{% endblock %}
+	<div class="container">
+		<div class="header clearfix">
+			<nav>
+			  <ul class="nav nav-pills pull-right">
+			    <li role="presentation"><a href="{{ url_for('showRestaurants') }}">Home</a></li>
+			  </ul>
+			</nav>
+			<h3 class="text-muted">Restaurant Menus</h3>
+		</div>
+
+		<div class="jumbotron">
+		<h1 class="text-center">Restaurant Menu App</h1>
+		<p class="lead">Browse restaurant menus.</p>
+		</div>
+		{% with messages = get_flashed_messages() %}
+			{% if messages %}
+				<ul class="flash-mssg alert alert-success">
+					{% for message in messages %}
+						<li>{{ message }}</li>
+					{% endfor %}	
+				</ul>
+			{% endif %}
+		{% endwith %}
+
+		{% block content %}
+		{% endblock %}
+
+
+		<footer class="footer">
+		<p>&copy; Created by John Laine</p>
+		</footer>
+
+    </div> <!-- /container -->
+
 
 	<!-- JS Files-->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

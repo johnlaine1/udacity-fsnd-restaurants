@@ -3,19 +3,28 @@
 {% block content %}
 
 <h2>Menu for {{ restaurant.name }}</h2>
+<a href="{{ url_for('addMenuItem', restaurant_id=restaurant.id) }}">Add a menu item</a>
 {% if menu_items %}
-	<ul>
+	<div class="row menu-items">
 		{% for item in menu_items %}
-			<li>
-				Name: {{ item.name }}<br>
-				Description: {{ item.description }}<br>
-				Price: {{ item.price }}<br>
-				Course: {{ item.course }}<br>
-				<a href="{{ url_for('editMenuItem', restaurant_id=restaurant.id, menu_item_id=item.id) }}">Edit</a>
-				<a href="{{ url_for('deleteMenuItem', restaurant_id=restaurant.id, menu_item_id=item.id) }}">Delete</a>
-			</li>
+			<div class="col-md-4">
+				<div class="panel panel-primary menu-item">
+					<div class="panel-heading">
+						<h3 class="panel-title">
+							{{ item.name }}
+						</h3>
+					</div>
+					<div class="panel-body">
+						<p>{{ item.description }}</p>
+						<span>Price: {{ item.price }}</span><br>
+						<span>Course: {{ item.course }}</span><br>
+						<a class="btn btn-success" href="{{ url_for('editMenuItem', restaurant_id=restaurant.id, menu_item_id=item.id) }}">Edit</a>
+						<a class="btn btn-danger" href="{{ url_for('deleteMenuItem', restaurant_id=restaurant.id, menu_item_id=item.id) }}">Delete</a>
+					</div>
+				</div>
+			</div>
 		{% endfor %}
-	</ul>
+	</div>
 {% else %}
 	<p>It appears that there are no menu items for this restaurant</p>
 {% endif %}

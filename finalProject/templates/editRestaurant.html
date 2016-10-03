@@ -4,14 +4,12 @@
 
 <h2>Edit the information for: {{ restaurant.name }}</h2>
 <form method="post" action="#">
-<div>
-	<label for="name">
-		Name
+	<div class="form-group">
+		<label for="name"></label>
 		<input type="text" value="{{ restaurant.name }}" name="name">
-	</label>
-</div>
-<input type="submit" value="edit">
-<a href="{{ url_for('showRestaurants') }}">Cancel</a>
+	</div>
+	<input class="btn btn-primary" type="submit" value="edit">
+	<a href="{{ url_for('showRestaurants') }}">Cancel</a>
 </form>
 
 {% endblock %}
